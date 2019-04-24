@@ -35,7 +35,9 @@ def level_order(root)
     res = []
     while !visited.empty?
         a, level = visited.pop
+        #if first time initiate with an empty array, associated with level 0
         res[level] ||= []
+        #add current value of the node to the index indicating the current level of the tree
         res[level] << a.val
         print "#{a.val}, "
         if a.right 
@@ -49,7 +51,3 @@ def level_order(root)
     
     
 res
-    
-    
-    
-end
