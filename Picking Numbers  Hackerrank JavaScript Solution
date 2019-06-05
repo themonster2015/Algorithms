@@ -1,0 +1,43 @@
+/*
+Given an array of integers, find and print the maximum number of integers you can select from the array such that the absolute difference between any two of the chosen integers is less than or equal to . For example, if your array is , you can create two subarrays meeting the criterion:  and . The maximum length subarray has  elements.
+
+Function Description
+
+Complete the pickingNumbers function in the editor below. It should return an integer that represents the length of the longest array that can be created.
+
+pickingNumbers has the following parameter(s):
+
+a: an array of integers
+Input Format
+
+The first line contains a single integer , the size of the array . 
+The second line contains  space-separated integers .
+
+Constraints
+
+The answer will be .
+Output Format
+
+A single integer denoting the maximum number of integers you can choose from the array such that the absolute difference between any two of the chosen integers is .
+*/
+
+function pickingNumbers(a) {
+    // Write your code here
+    var a = [1, 2, 2, 3, 1, 2];
+    let map = {};
+    let max = 0;
+    a.forEach(function(n) {
+        map[n] = map[n]? map[n]+1 : 1;
+        map[n-1] = map[n-1]? map[n-1]:0;
+        map[n+1] = map[n+1]? map[n+1]:0;
+
+        max = Math.max(max, map[n] + map[n + 1], map[n] + map[n - 1]);
+    
+        console.log(map[n - 1]);
+      
+    });
+    return max;
+}
+const result = pickingNumbers(1, 2, 2, 3, 1, 2);
+
+console.log("hh " + result);
