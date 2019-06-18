@@ -1,0 +1,38 @@
+// Complete the timeInWords function below.
+function timeInWords(h, m) {
+const hours = [ 'zero',
+    'one', 'two', 'three', 'four', 'five',
+    'six', 'seven', 'eight', 'nine', 'ten',
+    'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen',
+    'sixteen', 'seventeen', 'eightteen', 'nineteen', 'twenty',
+    'twenty one', 'twenty two', 'twenty three', 'twenty four', 'twenty five',
+    'twenty six', 'twenty seven', 'twenty eight', 'twenty nine']
+
+  if(m === 0){
+      return hours[h] +  ' o\' clock'
+  }
+    let res = ''
+    if(m % 30 === 0){
+        res+= 'half'
+    }
+    else if(m % 15 === 0){
+        res += 'quarter'
+    } 
+    else if (m < 30){
+        
+        res += hours[m] + (m===1 ? ' minute' : ' minutes')
+    } else {
+        res = hours[60-m] + " minutes"
+    }
+    
+    if(m <= 30){
+        res += ' past ' + hours[h]
+    } else{
+        res += ' to ' + hours[h+1]
+    }
+    
+    
+    return res
+
+
+}
