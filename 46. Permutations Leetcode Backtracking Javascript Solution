@@ -1,0 +1,44 @@
+/*
+Given a collection of distinct integers, return all possible permutations.
+
+Example:
+
+Input: [1,2,3]
+Output:
+[
+  [1,2,3],
+  [1,3,2],
+  [2,1,3],
+  [2,3,1],
+  [3,1,2],
+  [3,2,1]
+]
+*/
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+
+let permuteHelper = function(nums,chosen,res){
+    console.log("permute " + nums + " chosen " + chosen)
+        if (nums.length === 0){
+             res.push(chosen.slice())
+            return
+        }
+        nums.forEach((num,idx) => {
+            chosen.push(num)
+            nums.splice(idx,1)
+            permuteHelper(nums,chosen,res)
+            nums.splice(idx,0,chosen.pop())
+            
+        })
+    }
+
+var permute = function(nums) {
+
+    let res = []
+    let chosen = []
+     permuteHelper(nums,chosen, res)
+    return res
+    
+};
